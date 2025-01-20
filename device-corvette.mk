@@ -88,9 +88,6 @@ PRODUCT_PACKAGES += update_engine \
     android.hardware.boot@1.2-impl-qti.recovery \
     android.hardware.boot@1.2-service
 
-ADDITIONAL_SYSTEM_PROPERTIES += \
-  ro.vendor.qti.va_aosp.support=1
-
 PRODUCT_PACKAGES += \
   update_engine_sideload
 
