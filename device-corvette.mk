@@ -96,12 +96,6 @@ PRODUCT_VENDOR_PROPERTIES += \
   tombstoned.max_tombstone_count=50
   ro.virtual_ab.compression.enabled=true
 
-# Qualcomm
-ADDITIONAL_SYSTEM_PROPERTIES += \
-    ro.vendor.qti.va_aosp.support=1
-ADDITIONAL_ODM_PROPERTIES += \
-    ro.vendor.qti.va_odm.support=1
-
 # f2fs utilities
 PRODUCT_PACKAGES += \
     sg_write_buffer \
@@ -173,6 +167,13 @@ BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
 BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA2048
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
+
+# Qualcomm
+ADDITIONAL_SYSTEM_PROPERTIES += \
+    ro.vendor.qti.va_aosp.support=1
+ADDITIONAL_ODM_PROPERTIES += \
+    ro.vendor.qti.va_odm.support=1
+
 
 # Enable Fuse Passthrough
 PRODUCT_PROPERTY_OVERRIDES += persist.sys.fuse.passthrough.enable=true
