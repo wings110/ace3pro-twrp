@@ -1,0 +1,6 @@
+blocklist zram
+blocklist zsmalloc
+blocklist can-bcm
+blocklist can-gw
+blocklist can-raw
+blocklist kheaders
