@@ -40,9 +40,9 @@ BOARD_VENDOR := $(or $(word 2,$(subst /, ,$(firstword $(MAKEFILE_LIST)))),$(valu
 ## Device identifier. This must come after all inclusions
 
 PRODUCT_DEVICE := $(PRODUCT_RELEASE_NAME)
-PRODUCT_NAME := twrp_corvette
+PRODUCT_NAME := $(CUSTOM_VENDOR)_$(PRODUCT_DEVICE)
 PRODUCT_MODEL := corvette
-PRODUCT_SYSTEM_NAME := corvette
+PRODUCT_SYSTEM_NAME := twrp_corvette
 PRODUCT_SYSTEM_DEVICE := corvette
 PRODUCT_BRAND := OnePlus
 PRODUCT_MANUFACTURER := OnePlus
@@ -56,3 +56,4 @@ DEVICE_PATH := device/$(PRODUCT_BRAND)/$(PRODUCT_DEVICE)
 
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, $(DEVICE_PATH)/device-$(PRODUCT_DEVICE).mk)
+
