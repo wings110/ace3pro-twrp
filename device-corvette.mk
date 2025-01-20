@@ -91,6 +91,13 @@ PRODUCT_PACKAGES += update_engine \
 PRODUCT_PACKAGES += \
   update_engine_sideload
 
+# Qualcomm
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.vendor.qti.va_aosp.support=1
+
+PRODUCT_ODM_PROPERTIES += \
+    ro.vendor.qti.va_odm.support=1
+
 # f2fs utilities
 PRODUCT_PACKAGES += \
     sg_write_buffer \
@@ -152,7 +159,6 @@ SOONG_CONFIG_ufsbsg_ufsframework := bsg
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     $(DEVICE_PATH)/security/otacert
 
-VENDOR_QTI_VA_ODM_SUPPORT=1
 
 # Copy modules for depmod
 PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*.ko,$(DEVICE_PATH)/twrp/recovery/root/vendor/lib/modules,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules)
