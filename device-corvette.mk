@@ -96,7 +96,9 @@ PRODUCT_VENDOR_PROPERTIES += \
   tombstoned.max_tombstone_count=50
   ro.virtual_ab.compression.enabled=true
 
-
+# Qualcomm
+ADDITIONAL_SYSTEM_PROPERTIES += \
+    ro.vendor.qti.va_aosp.support=1
 ADDITIONAL_ODM_PROPERTIES += \
     ro.vendor.qti.va_odm.support=1
 
