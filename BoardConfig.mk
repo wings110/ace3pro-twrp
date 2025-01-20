@@ -39,9 +39,11 @@ TARGET_2ND_ARCH_VARIANT := armv8-2a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a75
+ALLOW_MISSING_DEPENDENCIES := true
 
 # Bootloader
-TARGET_NO_BOOTLOADER := false
+BOARD_VENDOR := OnePlus
+TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
 TARGET_USES_REMOTEPROC := true
 
@@ -385,6 +387,8 @@ TW_FRAMERATE := 120
 TW_THEME := portrait_hdpi
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/devices/virtual/thermal/thermal_zone45/temp"
 TW_BRIGHTNESS_PATH := "/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/backlight/panel0-backlight/brightness"
+TW_MAX_BRIGHTNESS := 36500
+TW_DEFAULT_BRIGHTNESS := 15000
 TW_STATUS_ICONS_ALIGN := center
 TW_QCOM_ATS_OFFSET := 1666528204500
 TW_EXCLUDE_APEX := true
