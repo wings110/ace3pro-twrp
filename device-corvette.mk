@@ -88,14 +88,19 @@ PRODUCT_PACKAGES += update_engine \
     android.hardware.boot@1.2-impl-qti.recovery \
     android.hardware.boot@1.2-service
 
+ADDITIONAL_SYSTEM_PROPERTIES += \
+  ro.vendor.qti.va_aosp.support=1
+
 PRODUCT_PACKAGES += \
   update_engine_sideload
 
-# Qualcomm
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.vendor.qti.va_aosp.support=1
+PRODUCT_VENDOR_PROPERTIES += \
+  ro.com.android.dataroaming=true
+  tombstoned.max_tombstone_count=50
+  ro.virtual_ab.compression.enabled=true
 
-PRODUCT_ODM_PROPERTIES += \
+
+ADDITIONAL_ODM_PROPERTIES += \
     ro.vendor.qti.va_odm.support=1
 
 # f2fs utilities
