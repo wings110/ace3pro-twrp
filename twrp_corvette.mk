@@ -40,7 +40,7 @@ BOARD_VENDOR := $(or $(word 2,$(subst /, ,$(firstword $(MAKEFILE_LIST)))),$(valu
 ## Device identifier. This must come after all inclusions
 
 PRODUCT_DEVICE := $(PRODUCT_RELEASE_NAME)
-PRODUCT_NAME := corvette
+PRODUCT_NAME := $(CUSTOM_VENDOR)_$(PRODUCT_DEVICE)
 PRODUCT_MODEL := corvette
 PRODUCT_SYSTEM_NAME := corvette
 PRODUCT_SYSTEM_DEVICE := corvette
