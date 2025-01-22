@@ -106,8 +106,6 @@ AB_OTA_PARTITIONS += \
     xbl_ramdump
 
 # A/B related packages
-ADDITIONAL_SYSTEM_PROPERTIES += \
-  ro.vendor.qti.va_aosp.support=1
 
 ADDITIONAL_ODM_PROPERTIES += \
   ro.vendor.qti.va_odm.support=1
