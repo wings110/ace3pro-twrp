@@ -107,10 +107,10 @@ AB_OTA_PARTITIONS += \
 
 # A/B related packages
 ADDITIONAL_SYSTEM_PROPERTIES += \
-  ro.vendor.qti.va_odm.support=1
+  ro.vendor.qti.va_aosp.support=1
 
 ADDITIONAL_ODM_PROPERTIES += \
-  ro.vendor.qti.va_aosp.support=1
+  ro.vendor.qti.va_odm.support=1
 
 PRODUCT_PACKAGES += update_engine \
     update_engine_client \
