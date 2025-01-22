@@ -53,34 +53,65 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 # more partitions to this list for the bootloader and radio.
 
 # Main Logical Partitions
-AB_OTA_PARTITIONS := \
-    my_product \
-    my_engineering \
-    my_company \
-    my_carrier \
-    my_region \
-    my_heytap \
-    my_stock \
-    my_preload \
-    my_bigball \
-    my_manifest \
-    odm \
-    product \
-    system \
-    system_ext \
-    vendor
-
 AB_OTA_PARTITIONS += \
+    abl \
+    aop \
+    aop_config \
+    bluetooth \
     boot \
-    vendor_boot \
-    recovery \
-    vendor_dlkm \
+    cpucp \
+    cpucp_dtb \
+    devcfg \
+    dsp \
     dtbo \
-    vbmeta \
+    engineering_cdt \
+    featenabler \
+    hyp \
+    imagefv \
     init_boot \
-    system_dlkm
+    keymaster \
+    modem \
+    my_bigball \
+    my_carrier \
+    my_company \
+    my_engineering \
+    my_heytap \
+    my_manifest \
+    my_preload \
+    my_product \
+    my_region \
+    my_stock \
+    odm \
+    oplus_sec \
+    oplusstanvbk \
+    product \
+    qupfw \
+    recovery \
+    shrm \
+    splash \
+    system \
+    system_dlkm \
+    system_ext \
+    tz \
+    uefi \
+    uefisecapp \
+    vbmeta \
+    vbmeta_system \
+    vbmeta_vendor \
+    vendor \
+    vendor_boot \
+    vendor_dlkm \
+    xbl \
+    xbl_config \
+    xbl_ramdump
 
 # A/B related packages
+ADDITIONAL_SYSTEM_PROPERTIES += \
+  ro.vendor.qti.va_odm.support=1
+
+ADDITIONAL_ODM_PROPERTIES += \
+  ro.vendor.qti.va_aosp.support=1
+
 PRODUCT_PACKAGES += update_engine \
     update_engine_client \
     update_verifier \
@@ -92,8 +123,24 @@ PRODUCT_PACKAGES += \
   update_engine_sideload
 
 PRODUCT_VENDOR_PROPERTIES += \
+  external_storage.projid.enabled=1
+  external_storage.casefold.enabled=1
+  external_storage.sdcardfs.enabled=0
+  keyguard.no_require_sim=true
   ro.com.android.dataroaming=true
+  ro.config.ringtone=Ring_Synth_04.ogg
+  # Removed by post_process_props.py because overridden by ro.config.notification_sound?=OnTheHunt.ogg
+  #ro.config.notification_sound?=pixiedust.ogg
+  # Removed by post_process_props.py because overridden by ro.zygote=zygote64
+  #ro.zygote?=zygote32
   tombstoned.max_tombstone_count=50
+  ro.logd.size.stats=64K
+  log.tag.stats_log=I
+  ro.carrier=unknown
+  ro.config.notification_sound=OnTheHunt.ogg
+  ro.config.alarm_alert=Alarm_Classic.ogg
+  ro.zygote=zygote64
+  ro.virtual_ab.enabled=true
   ro.virtual_ab.compression.enabled=true
 
 # f2fs utilities
