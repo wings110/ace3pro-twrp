@@ -32,10 +32,10 @@ PRODUCT_RELEASE_NAME := $(lastword $(subst /, ,$(lastword $(subst _, ,$(firstwor
 CUSTOM_VENDOR := $(lastword $(subst /, ,$(firstword $(subst _, ,$(firstword $(MAKEFILE_LIST))))))
 
 # Inherit some common Omni stuff.
-$(call inherit-product, vendor/omni/config/common.mk)
+$(call inherit-product, vendor/twrp/config/common.mk)
 
 # Inherit from corvette device
-$(call inherit-product, device/oneplus/corvette/twrp_device.mk)
+$(call inherit-product, device/oneplus/corvette/twrp_corvette.mk)
 
 PRODUCT_DEVICE := corvette
 PRODUCT_NAME := twrp_corvette
