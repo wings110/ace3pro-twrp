@@ -35,7 +35,7 @@ CUSTOM_VENDOR := $(lastword $(subst /, ,$(firstword $(subst _, ,$(firstword $(MA
 $(call inherit-product, vendor/omni/config/common.mk)
 
 # Inherit from corvette device
-$(call inherit-product, device/oneplus/corvette/device.mk)
+$(call inherit-product, device/oneplus/corvette/twrp_device.mk)
 
 PRODUCT_DEVICE := corvette
 PRODUCT_NAME := twrp_corvette
