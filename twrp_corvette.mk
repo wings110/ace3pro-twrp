@@ -47,5 +47,3 @@ PRODUCT_GMS_CLIENTID_BASE := android-oneplus
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="twrp_corvette-eng 16.1.0 SKQ1.240815.001 color59710260306 test-keys"
-
-BUILD_FINGERPRINT := OnePlus/twrp_corvette/corvette:16.1.0/SKQ1.240815.001/color59710260306:eng/test-keys
