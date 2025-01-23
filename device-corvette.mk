@@ -115,6 +115,9 @@ PRODUCT_PACKAGES += update_engine \
     android.hardware.boot@1.2-service
 
 PRODUCT_PACKAGES += \
+
+  android.hardware.boot@1.0-impl \
+  android.hardware.boot@1.0-service
   update_engine_sideload
 
 PRODUCT_VENDOR_PROPERTIES += \
@@ -140,9 +143,16 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 # f2fs utilities
 PRODUCT_PACKAGES += \
+    bootctrl.pineapple
     sg_write_buffer \
     f2fs_io \
     check_f2fs
+
+PRODUCT_STATIC_BOOT_CONTROL_HAL := \
+    bootctrl.pineapple \
+    libgptutils \
+    libz \
+    libcutils
 
 # Userdata checkpoint
 PRODUCT_PACKAGES += \
@@ -181,6 +191,13 @@ PRODUCT_PACKAGES += vibrator.default
 
 # qcom decryption
 PRODUCT_PACKAGES += \
+
+    otapreopt_script \
+    cppreopts.sh \
+    update_engine \
+    update_verifier \
+    update_engine_sideload
+
     qcom_decrypt \
     qcom_decrypt_fbe
 

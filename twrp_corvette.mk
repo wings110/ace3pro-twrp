@@ -31,27 +31,21 @@ PRODUCT_RELEASE_NAME := $(lastword $(subst /, ,$(lastword $(subst _, ,$(firstwor
 # Custom vendor used in build tree (automatically taken from this file's prefix)
 CUSTOM_VENDOR := $(lastword $(subst /, ,$(firstword $(subst _, ,$(firstword $(MAKEFILE_LIST))))))
 
-# Inherit from our custom product configuration
-$(call inherit-product, vendor/$(CUSTOM_VENDOR)/config/common.mk)
+# Inherit some common Omni stuff.
+$(call inherit-product, vendor/omni/config/common.mk)
 
-# OEM Info (automatically taken from device tree path)
-BOARD_VENDOR := $(or $(word 2,$(subst /, ,$(firstword $(MAKEFILE_LIST)))),$(value 2))
+# Inherit from corvette device
+$(call inherit-product, device/oneplus/corvette/device.mk)
 
-## Device identifier. This must come after all inclusions
-
-PRODUCT_DEVICE := $(PRODUCT_RELEASE_NAME)
-PRODUCT_NAME := $(CUSTOM_VENDOR)_$(PRODUCT_DEVICE)
+PRODUCT_DEVICE := corvette
+PRODUCT_NAME := twrp_corvette
+PRODUCT_BRAND := OnePlus
 PRODUCT_MODEL := corvette
-PRODUCT_SYSTEM_NAME := $(PRODUCT_MODEL)
-PRODUCT_SYSTEM_DEVICE := corvette
-PRODUCT_BRAND := $(BOARD_VENDOR)
-PRODUCT_MANUFACTURER := OnePlus
+PRODUCT_MANUFACTURER := oneplus
+
+PRODUCT_GMS_CLIENTID_BASE := android-oneplus
+
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    TARGET_DEVICE=$(PRODUCT_SYSTEM_DEVICE) \
-    TARGET_PRODUCT=$(PRODUCT_SYSTEM_NAME)
+    PRIVATE_BUILD_DESC="twrp_corvette-eng 16.1.0 SKQ1.240815.001 color59710260306 test-keys"
 
-# Device path for OEM device tree
-DEVICE_PATH := device/$(PRODUCT_BRAND)/$(PRODUCT_DEVICE)
-
-# Inherit from hardware-specific part of the product configuration
-$(call inherit-product, $(DEVICE_PATH)/device-$(PRODUCT_DEVICE).mk)
+BUILD_FINGERPRINT := OnePlus/twrp_corvette/corvette:16.1.0/SKQ1.240815.001/color59710260306:eng/test-keys
