@@ -1,0 +1,6 @@
+
+####################################
+# from variable ADDITIONAL_SYSTEM_PROPERTIES
+####################################
+ro.vendor.qti.va_aosp.support=1
+
