@@ -117,7 +117,7 @@ PRODUCT_PACKAGES += update_engine \
 PRODUCT_PACKAGES += \
 
   android.hardware.boot@1.0-impl \
-  android.hardware.boot@1.0-service
+  android.hardware.boot@1.0-service \
   update_engine_sideload
 
 PRODUCT_VENDOR_PROPERTIES += \
@@ -143,7 +143,7 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 # f2fs utilities
 PRODUCT_PACKAGES += \
-    bootctrl.pineapple
+    bootctrl.pineapple \
     sg_write_buffer \
     f2fs_io \
     check_f2fs
@@ -196,7 +196,7 @@ PRODUCT_PACKAGES += \
     cppreopts.sh \
     update_engine \
     update_verifier \
-    update_engine_sideload
+    update_engine_sideload \
 
     qcom_decrypt \
     qcom_decrypt_fbe
