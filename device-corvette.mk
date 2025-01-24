@@ -115,10 +115,9 @@ PRODUCT_PACKAGES += update_engine \
     android.hardware.boot@1.2-service
 
 PRODUCT_PACKAGES += \
-
-  android.hardware.boot@1.0-impl \
-  android.hardware.boot@1.0-service \
-  update_engine_sideload
+    android.hardware.boot@1.0-impl \
+    android.hardware.boot@1.0-service \
+    update_engine_sideload
 
 PRODUCT_VENDOR_PROPERTIES += \
   external_storage.projid.enabled=1
