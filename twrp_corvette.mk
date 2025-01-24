@@ -16,6 +16,9 @@
 #
 # Only the below variable(s) need to be changed!
 #
+# Identifier for common folder
+COMMON_SOC := sm86xx
+
 # Define hardware platform
 PRODUCT_PLATFORM := pineapple
 
@@ -50,8 +53,19 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_DEVICE=$(PRODUCT_SYSTEM_DEVICE) \
     TARGET_PRODUCT=$(PRODUCT_SYSTEM_NAME)
 
+# Common path for device trees
+COMMON_PATH := device/$(PRODUCT_BRAND)/$(COMMON_SOC)-common
+
 # Device path for OEM device tree
 DEVICE_PATH := device/$(PRODUCT_BRAND)/$(PRODUCT_DEVICE)
 
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, $(DEVICE_PATH)/device-$(PRODUCT_DEVICE).mk)
+
+
+PRODUCT_GMS_CLIENTID_BASE := android-oneplus
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRIVATE_BUILD_DESC="twrp_corvette-eng 16.1.0 SKQ1.240815.001 color59710260306 test-keys"
+
+BUILD_FINGERPRINT := OnePlus/twrp_corvette/corvette:16.1.0/SKQ1.240815.001/color59710260306:eng/test-keys
