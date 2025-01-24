@@ -184,13 +184,11 @@ PRODUCT_PACKAGES += vibrator.default
 
 # qcom decryption
 PRODUCT_PACKAGES += \
-
     otapreopt_script \
     cppreopts.sh \
     update_engine \
     update_verifier \
     update_engine_sideload \
-
     qcom_decrypt \
     qcom_decrypt_fbe
 
