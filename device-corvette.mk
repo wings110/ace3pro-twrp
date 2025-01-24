@@ -147,12 +147,6 @@ PRODUCT_PACKAGES += \
     f2fs_io \
     check_f2fs
 
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.pineapple \
-    libgptutils \
-    libz \
-    libcutils
-
 # Userdata checkpoint
 PRODUCT_PACKAGES += \
     checkpoint_gc
