@@ -43,7 +43,7 @@ RELAX_USES_LIBRARY_CHECK := true
 AB_OTA_UPDATER := true
 
 # VNDK
-PRODUCT_TARGET_VNDK_VERSION := 32
+PRODUCT_TARGET_VNDK_VERSION := 31
 
 # Virtual A/B
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
@@ -53,60 +53,34 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 # more partitions to this list for the bootloader and radio.
 
 # Main Logical Partitions
-AB_OTA_PARTITIONS += \
-    abl \
-    aop \
-    aop_config \
-    bluetooth \
-    boot \
-    cpucp \
-    cpucp_dtb \
-    devcfg \
-    dsp \
-    dtbo \
-    engineering_cdt \
-    featenabler \
-    hyp \
-    imagefv \
-    init_boot \
-    keymaster \
-    modem \
-    my_bigball \
-    my_carrier \
-    my_company \
-    my_engineering \
-    my_heytap \
-    my_manifest \
-    my_preload \
+AB_OTA_PARTITIONS := \
     my_product \
+    my_engineering \
+    my_company \
+    my_carrier \
     my_region \
+    my_heytap \
     my_stock \
+    my_preload \
+    my_bigball \
+    my_manifest \
     odm \
-    oplus_sec \
-    oplusstanvbk \
     product \
-    qupfw \
-    recovery \
-    shrm \
-    splash \
     system \
-    system_dlkm \
     system_ext \
-    tz \
-    uefi \
-    uefisecapp \
-    vbmeta \
-    vbmeta_system \
-    vbmeta_vendor \
-    vendor \
+    vendor
+
+AB_OTA_PARTITIONS += \
+    boot \
     vendor_boot \
+    recovery \
     vendor_dlkm \
-    xbl \
-    xbl_config \
-    xbl_ramdump
+    dtbo \
+    vbmeta \
+    init_boot \
+    system_dlkm
 
 # A/B related packages
-
 PRODUCT_PACKAGES += update_engine \
     update_engine_client \
     update_verifier \
@@ -115,34 +89,10 @@ PRODUCT_PACKAGES += update_engine \
     android.hardware.boot@1.2-service
 
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.0-impl \
-    android.hardware.boot@1.0-service \
-    update_engine_sideload
-
-PRODUCT_VENDOR_PROPERTIES += \
-  external_storage.projid.enabled=1
-  external_storage.casefold.enabled=1
-  external_storage.sdcardfs.enabled=0
-  keyguard.no_require_sim=true
-  ro.com.android.dataroaming=true
-  ro.config.ringtone=Ring_Synth_04.ogg
-  # Removed by post_process_props.py because overridden by ro.config.notification_sound?=OnTheHunt.ogg
-  #ro.config.notification_sound?=pixiedust.ogg
-  # Removed by post_process_props.py because overridden by ro.zygote=zygote64
-  #ro.zygote?=zygote32
-  tombstoned.max_tombstone_count=50
-  ro.logd.size.stats=64K
-  log.tag.stats_log=I
-  ro.carrier=unknown
-  ro.config.notification_sound=OnTheHunt.ogg
-  ro.config.alarm_alert=Alarm_Classic.ogg
-  ro.zygote=zygote64
-  ro.virtual_ab.enabled=true
-  ro.virtual_ab.compression.enabled=true
+  update_engine_sideload
 
 # f2fs utilities
 PRODUCT_PACKAGES += \
-    bootctrl.pineapple \
     sg_write_buffer \
     f2fs_io \
     check_f2fs
@@ -158,10 +108,10 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_OPTIONAL_vendor=true
 
 # Set GRF/Vendor freeze properties
-BOARD_SHIPPING_API_LEVEL := 32
-BOARD_API_LEVEL := 32
-SHIPPING_API_LEVEL := 32
-PRODUCT_SHIPPING_API_LEVEL := 32
+BOARD_SHIPPING_API_LEVEL := 31
+BOARD_API_LEVEL := 31
+SHIPPING_API_LEVEL := 31
+PRODUCT_SHIPPING_API_LEVEL := 31
 
 #Support to compile recovery without msm headers
 TARGET_HAS_GENERIC_KERNEL_HEADERS := true
@@ -173,22 +123,10 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_PACKAGES += fastbootd
 
 # Add default implementation of fastboot HAL.
-PRODUCT_PACKAGES += android.hardware.boot@1.0-impl-1.2-qti
 PRODUCT_PACKAGES += android.hardware.fastboot@1.1-impl-mock
-PRODUCT_PACKAGES += android.hardware.gatekeeper@1.0-impl-qti
-PRODUCT_PACKAGES += android.hardware.health@2.0-impl-2.1
-PRODUCT_PACKAGES += android.hardware.health@2.0-impl-default
-PRODUCT_PACKAGES += libEseUtils
-PRODUCT_PACKAGES += libqtigatekeeper
-PRODUCT_PACKAGES += vibrator.default
 
 # qcom decryption
 PRODUCT_PACKAGES += \
-    otapreopt_script \
-    cppreopts.sh \
-    update_engine \
-    update_verifier \
-    update_engine_sideload \
     qcom_decrypt \
     qcom_decrypt_fbe
 
@@ -208,9 +146,6 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
     $(DEVICE_PATH)/security/otacert
 
 
-# Copy modules for depmod
-PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*.ko,$(DEVICE_PATH)/twrp/recovery/root/vendor/lib/modules,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules)
-
 # System AVB
 BOARD_AVB_VBMETA_SYSTEM := system
 BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
@@ -218,16 +153,7 @@ BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA2048
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
 
-# TWRP specific build flags
-TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
-
-# Touchscreen
-persist.vendor.qti.inputopts.enable=true
-persist.vendor.qti.inputopts.movetouchslop=0.6
-
 # Enable Fuse Passthrough
 PRODUCT_PROPERTY_OVERRIDES += persist.sys.fuse.passthrough.enable=true
 
-# Inherit from OEM SOC-common
-# $(call inherit-product, $(COMMON_PATH)/device-common.mk)
 TARGET_RECOVERY_DEVICE_DIRS += $(DEVICE_PATH)/twrp

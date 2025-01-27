@@ -16,7 +16,6 @@
 #
 # Only the below variable(s) need to be changed!
 #
-
 # Define hardware platform
 PRODUCT_PLATFORM := pineapple
 
@@ -42,11 +41,12 @@ BOARD_VENDOR := $(or $(word 2,$(subst /, ,$(firstword $(MAKEFILE_LIST)))),$(valu
 
 PRODUCT_DEVICE := $(PRODUCT_RELEASE_NAME)
 PRODUCT_NAME := $(CUSTOM_VENDOR)_$(PRODUCT_DEVICE)
-PRODUCT_MODEL := corvette
+PRODUCT_MODEL := PJX110
 PRODUCT_SYSTEM_NAME := $(PRODUCT_MODEL)
-PRODUCT_SYSTEM_DEVICE := corvette
+PRODUCT_SYSTEM_DEVICE := OP5D06L1
 PRODUCT_BRAND := $(BOARD_VENDOR)
-PRODUCT_MANUFACTURER := OnePlus
+PRODUCT_MANUFACTURER := $(PRODUCT_BRAND)
+
 PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_DEVICE=$(PRODUCT_SYSTEM_DEVICE) \
     TARGET_PRODUCT=$(PRODUCT_SYSTEM_NAME)
@@ -56,11 +56,3 @@ DEVICE_PATH := device/$(PRODUCT_BRAND)/$(PRODUCT_DEVICE)
 
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, $(DEVICE_PATH)/device-$(PRODUCT_DEVICE).mk)
-
-
-PRODUCT_GMS_CLIENTID_BASE := android-oneplus
-
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="twrp_corvette-eng 16.1.0 SKQ1.240815.001 color59710260306 test-keys"
-
-BUILD_FINGERPRINT := OnePlus/twrp_corvette/corvette:16.1.0/SKQ1.240815.001/color59710260306:eng/test-keys

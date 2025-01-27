@@ -1,7 +1,7 @@
 <!--
     Input:
         system/libhidl/vintfdata/manifest.xml
-        device/qcom/qssi/framework_manifest.xml
+        device/qcom/qssi_64/framework_manifest.xml
         vendor/oplus/system/config/qcom/module_config/oplus_device_framework_manifest.xml
 -->
 <manifest version="4.0" type="framework">
@@ -70,11 +70,6 @@
         <fqname>@1.0::ISystemEvent/default</fqname>
         <fqname>@1.0::ISystemResource/default</fqname>
     </hal>
-    <hal format="hidl">
-        <name>vendor.qti.hardware.wifi.keystore</name>
-        <transport>hwbinder</transport>
-        <fqname>@1.0::IKeystoreExt/default</fqname>
-    </hal>
     <system-sdk>
         <version>29</version>
         <version>30</version>
@@ -84,4 +79,3 @@
         <version>34</version>
     </system-sdk>
 </manifest>
-
